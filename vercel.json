@@ -1,0 +1,26 @@
+{
+  
+  "builds": [
+    {
+      "src": "django_proyect/wsgi.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "build_files.sh",
+      "use": "@vercel/static-buid",
+      "config": {
+          "distDir": "sataticfiles"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "django_proyect/wsgi.py"
+    }
+  ]
+}
